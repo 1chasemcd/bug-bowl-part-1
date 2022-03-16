@@ -36,8 +36,8 @@ void iterate_fib(int* a, int* b) {
 
 // Function to check if a number n is prime
 bool is_prime(int n) {
-    for (int i = 2; i < n / 2 + 1; i++) {
-        // If n is divisible by any number between 2 and n / 2 + 1, it is composite
+    for (int i = 2; i < n / 2; i++) {
+        // If n is divisible by any number between 2 and n / 2, it is composite
         if (n % i == 0) {
             return false;
         }
