@@ -27,6 +27,13 @@ int main() {
     return 0;
 }
 
+// Function to get next iteration of fibonacci (b -> a, next_fib -> b)
+void iterate_fib(int* a, int* b) {
+    int temp = *a + *b;
+    *a = *b;
+    *b = temp;
+}
+
 // Function to check if a number n is prime
 bool is_prime(int n) {
     for (int i = 2; i < n / 2 + 1; i++) {
@@ -38,13 +45,6 @@ bool is_prime(int n) {
 
     // n is prime
     return true;
-}
-
-// Function to get next iteration of fibonacci (b -> a, next_fib -> b)
-void iterate_fib(int* a, int* b) {
-    int temp = *a + *b;
-    *a = *b;
-    *b = temp;
 }
 
 // Function to check if a number n has an odd number of digits when converted to binary
