@@ -1,6 +1,26 @@
-.text
+.data
+	prompt: .asciz "Enter a string: "
+	output: .asciz "The length of your string is: "
+.text 0x00400000
 
 main:
+	#this section prompts the user to enter a string anf then calls the strlen function
+	addi a7, zero, 4	# display prompt
+	la a0, prompt
+	ecall
+	
+	addi a1, zero, 40
+	addi a7, zero, 8	# get a string  from user
+	ecall
+	add s0, a0, zero 	#store the number in s0
+	
+	addi a7, zero, 4	# display output
+	la a0, output
+	ecall
+	add a0, s0, zero	# put number in a0
+	 
+	jal ra, strlen		#call strlen
+	
 	# Cleanly exit
 	addi a7, zero, 10
 	ecall
@@ -70,4 +90,22 @@ is_odd_binary_digits:
 	andi a0, t1, 1
 	
 	# Return
+	jalr zero, ra, 0
+	
+# Procedure to find the number of chars in a string that the user enters
+# a0 - where the string is stored
+# a0 - return value of the length of the string
+strlen:
+	add  t0, zero, zero   # i = 0
+	Start: # Start of for loop 
+		add  t1, t0, a0      # offset for str[i]
+		lb   t1, 0(t1)       # dereference str[i]
+    		beq  t1, zero, End    # if str[i] == 0, break for loop
+    		addi t0, t0, 1       # incriment i
+    		jal  zero, Start        # Jump back to the start of the for loop
+    	End: # End of for loop
+    	addi t0, t0, -1
+    	addi a0, t0, 0       # Move t0 into a0 to return
+    	li  a7, 1          # service 1 is print integer
+    	ecall
 	jalr zero, ra, 0
