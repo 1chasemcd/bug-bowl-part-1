@@ -1,16 +1,16 @@
 String Length Tests:
 
 Input: "Comp org is fun"
-Output: 15, not prime, even
+Output: 15, composite, even
 
 Input: "Yee Haw"
 Output: 7, prime, odd
 
 Input: "Woop woop"
-Output: 9, not prime, even
+Output: 9, composite, even
 
 Input: "Have a good day"
-Output: 15, not prime, even
+Output: 15, composite, even
 
 Input: "Howdy y'all"
 Output: 11, prime, even
@@ -18,5 +18,5 @@ Output: 11, prime, even
 Format should be:
 Enter a string: (input)
 The length of your string is: (length)
-The length of your string is (prime or not prime).
-There is an (even or odd) number of binary digits.
+The length of your string is a (prime or composite) number.
+The length of your string has an (even or odd) number of binary digits.
