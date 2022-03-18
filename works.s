@@ -1,35 +1,68 @@
 .data
-	prompt: .asciz "Enter a string: "
-	output: .asciz "The length of your string is: "
+	prompt:           .asciz "Enter a string: "
+	output_length:    .asciz "The length of your string is: "
+	output_prime:     .asciz "\nThe length of your string is a prime number.\n"
+	output_composite: .asciz "\nThe length of your string is a composite number.\n"
+	output_even:      .asciz "The length of your string has an even number of binary digits."
+	output_odd:       .asciz  "The length of your string has an odd number of binary digits."
 .text 0x00400000
 
 main:
-	#this section prompts the user to enter a string anf then calls the strlen function
+	#this section prompts the user to enter a string and then calls the strlen function
 	addi a7, zero, 4	# display prompt
 	la a0, prompt
 	ecall
 	
-	addi a1, zero, 40
+	addi a1, zero, 100
 	addi a7, zero, 8	# get a string  from user
 	ecall
+	
 	add s0, a0, zero 	#store the number in s0
 	
-	addi a7, zero, 4	# display output
-	la a0, output
+	addi a7, zero, 4	# display output for length of string
+	la a0, output_length
 	ecall
+	
 	add a0, s0, zero	# put number in a0
 	 
 	jal ra, strlen		#call strlen
 	
-	# Cleanly exit
-	addi a7, zero, 10
+	addi a7, zero, 1
+	ecall                   # a0 now contains length of string - print this out
+	
+	add a2, zero, a0        # Put string length in a2 as parameter for following procedures
+	
+	jal ra, is_prime
+	add s0, zero, a0        # Store true/false for is_prime in s0
+	
+	jal ra, is_odd_binary_digits
+	add s1, zero, a0        # Store true/false for is_odd_binary_digits in s1
+	
+	# Print out messages regarding string length
+	addi a7, zero, 4
+	
+	beq s0, zero, load_composite_message # If (is_prime == false) goto load_composite_message
+	
+	load_prime_message: la a0, output_prime
+	jal zero, exit_prime_message
+	
+	load_composite_message: la a0, output_composite
+	exit_prime_message:
+	
+	ecall # Print whichever message was loaded
+	
+	beq s1, zero, load_even_message # If (is_odd_binary_digits == false) goto load_even_message
+	
+	load_odd_message: la a0, output_odd
+	jal zero, exit_even_message
+	
+	load_even_message: la a0, output_even
+	exit_even_message:
+	
+	ecall # Print whichever message was loaded
+	
+	addi a7, zero, 10	# exit
 	ecall
-
-# Procedure to get next fibonacci iteration
-# a3 - fibonacci number 1
-# a4 - fibonacci number 2
-# a4 -> a3, next_fib -> a4
-iterate_fib:
 
 # Procedure to check if a number is prime
 # a2 - input number to check
@@ -106,6 +139,4 @@ strlen:
     	End: # End of for loop
     	addi t0, t0, -1
     	addi a0, t0, 0       # Move t0 into a0 to return
-    	li  a7, 1          # service 1 is print integer
-    	ecall
 	jalr zero, ra, 0
