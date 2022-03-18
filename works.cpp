@@ -26,7 +26,7 @@ int main() {
 
 	// Prompts the user to enter a string and calls the getLength function on the string
 	std::string sentence;
-	std::cout << "Please enter a string: ";
+	std::cout << "Enter a string: ";
 	getline(std::cin, sentence);
 	getLength(sentence);
 	return 0;
