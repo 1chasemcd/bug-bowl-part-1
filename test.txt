@@ -9,6 +9,12 @@ Output: 7
 Input: "Woop woop"
 Output: 9
 
+Input: "Have a good day"
+Output: 15
+
+Input: "Howdy y'all"
+Output: 11
+
 Format should be:
 Enter a string: (input)
 The length of your string is: (output)
