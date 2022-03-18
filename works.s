@@ -5,6 +5,7 @@
 	output_composite: .asciz "\nThe length of your string is a composite number.\n"
 	output_even:      .asciz "The length of your string has an even number of binary digits."
 	output_odd:       .asciz  "The length of your string has an odd number of binary digits."
+	input:            .space 100
 .text 0x00400000
 
 main:
@@ -15,6 +16,7 @@ main:
 	
 	addi a1, zero, 100
 	addi a7, zero, 8	# get a string  from user
+	la a0, input
 	ecall
 	
 	add s0, a0, zero 	#store the number in s0
