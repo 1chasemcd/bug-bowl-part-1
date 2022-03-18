@@ -1,0 +1,14 @@
+String Length Tests:
+
+Input: "Comp org is fun"
+Output: 15
+
+Input: "Yee Haw"
+Output: 7
+
+Input: "Woop woop"
+Output: 9
+
+Format should be:
+Enter a string: (input)
+The length of your string is: (output)
