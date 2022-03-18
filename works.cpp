@@ -68,9 +68,12 @@ bool is_odd_binary_digits(int n) {
 
 //Function that allows the user to input a string and returns the length of the string
 void getLength(std::string sentence){
+	//set the length equal to zero
 	int count = 0;
 	for(int i = 0; sentence[i] != '\0'; i++){
+		//cycle through the string until you reach "\0" because the sentence ends, and increment count each time
 		count++;
 	}
+	//print the length
 	std::cout << "The length of your string is: " << count;
 }
