@@ -3,40 +3,34 @@
 void iterate_fib(int* a, int* b);
 bool is_prime(int n);
 bool is_odd_binary_digits(int n);
-void getLength(std::string sentence);
+int getLength(std::string sentence);
 
 int main() {
-	// Initialize fibonacci numbers a and b
-	int a = 1;
-	int b = 1;
-
-	// Maximum number to test
-	int max = 1000000000;
-
-	// Loop until fibonacci number exceeds maximum value specified
-	while (a <= max) {
-		// Print out fibonacci numbers that are prime and have an odd number of binary digits
-		if (is_prime(a) && is_odd_binary_digits(a)) {
-			std::cout << a << std::endl;
-		}
-
-		// Increment a and be to be next fibonacci numbers
-		iterate_fib(&a, &b);
-	}
 
 	// Prompts the user to enter a string and calls the getLength function on the string
 	std::string sentence;
 	std::cout << "Enter a string: ";
 	getline(std::cin, sentence);
-	getLength(sentence);
-	return 0;
-}
+	int length = getLength(sentence);
 
-// Function to get next iteration of fibonacci (b -> a, next_fib -> b)
-void iterate_fib(int* a, int* b) {
-	int temp = *a + *b;
-	*a = *b;
-	*b = temp;
+	std::cout << "The length of your string is: " << length << std::endl;
+
+
+	// Calls is_prime to determine if the length of the string is a prime number.
+	if(is_prime(length) == true){
+		std::cout << "The length of your string is a prime number." << std::endl;
+	} else{
+		std::cout << "The length of your string is a composite number." << std::endl;
+	}
+
+	// Calls is_odd_binary_digits to determine if the length of the string is an odd number.
+	if(is_odd_binary_digits(length) == true){
+		std::cout << "The length of your string has an odd number of binary digits." << std::endl;
+	} else{
+		std::cout << "The length of your string has an even number of binary digits." << std::endl;
+	}
+
+	return 0;
 }
 
 // Function to check if a number n is prime
@@ -67,13 +61,10 @@ bool is_odd_binary_digits(int n) {
 }
 
 //Function that allows the user to input a string and returns the length of the string
-void getLength(std::string sentence){
-	//set the length equal to zero
+int getLength(std::string sentence){
 	int count = 0;
 	for(int i = 0; sentence[i] != '\0'; i++){
-		//cycle through the string until you reach "\0" because the sentence ends, and increment count each time
 		count++;
 	}
-	//print the length
-	std::cout << "The length of your string is: " << count;
+	return count;
 }
