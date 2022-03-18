@@ -18,16 +18,16 @@ int main() {
 
 	// Calls is_prime to determine if the length of the string is a prime number.
 	if(is_prime(length) == true){
-		std::cout << "The length of your string is prime." << std::endl;
+		std::cout << "The length of your string is a prime number." << std::endl;
 	} else{
-		std::cout << "The length of your string is not prime." << std::endl;
+		std::cout << "The length of your string is a composite number." << std::endl;
 	}
 
 	// Calls is_odd_binary_digits to determine if the length of the string is an odd number.
 	if(is_odd_binary_digits(length) == true){
-		std::cout << "The length of your string is odd." << std::endl;
+		std::cout << "The length of your string has an odd number of binary digits." << std::endl;
 	} else{
-		std::cout << "The length of your string is even." << std::endl;
+		std::cout << "The length of your string has an even number of binary digits." << std::endl;
 	}
 
 	return 0;
