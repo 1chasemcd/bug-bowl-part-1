@@ -1,3 +1,4 @@
+# There are 5 bugs in this code
 .data
 a:	.asciz "Enter a string: "
 b:	.asciz "The length of your string is: "
