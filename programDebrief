@@ -3,10 +3,11 @@ Date: 3/28/22
 2. How long in total did you spend on the program (design, code, debug, reporting)?
 About 6 hours total.
 3. What help did you seek out beyond the course material, and how did it help resolve your problem?
-None, we didn't run into too many problems.
+We recieved help from Kai, the TA for our period, with using the syscall for getting string input from the user.
 4. How did you verify your program met the specifications (testing, code review, or other quality assurance activities)?
 We tested our program with different string lengths and each of us reviewed eachothers code to ensure it met all the specifications.
 5. What parts of your code could use improvement or disappointed you (what work didn’t you get done, that more time would have enabled you to finish, or what bugs did you not resolve)?
 The only issue we could think of is to have functions that flow a bit better together and are more relatent to eachother.
 6. Which part of your code are you the most pleased about?
-All of it.
+We really like the algorithm we used for calculating the number of binary digits in an integer, since writing this algorithm in assembly made us
+think in a very different way from what we would have in higher level programming languages.
